@@ -31,15 +31,15 @@ pub struct Order {
 #[near_bindgen]
 impl KiranaOrderStatus {
   #[payable]
-  pub fn create_order(&mut self, _order: Order) -> String {
+  pub fn create_order(&mut self, order: Order) -> String {
     assert_self();
     assert_one_yocto();
-    let order = self.orders.get(&_order.order_id);
-    match order {
+    let _order = self.orders.get(&order.order_id);
+    match _order {
       Some(_) => env::panic(String::from("Order already exists").as_bytes()),
       None => {}
     }
-    self.orders.insert(&_order.order_id, &_order);
+    self.orders.insert(&order.order_id, &order);
     String::from("OK")
   }
   pub fn get_order(self, order_id: String) -> Order {
@@ -47,13 +47,13 @@ impl KiranaOrderStatus {
   }
 
   #[payable]
-  pub fn update_order(&mut self, _order: Order) -> String {
+  pub fn update_order(&mut self, order: Order) -> String {
     assert_self();
     assert_one_yocto();
-    let mut order = self.orders.get(&_order.order_id).expect("Order does not exist");
-    order.description = _order.description;
-    order.status = _order.status;
-    self.orders.insert(&_order.order_id, &order);
+    let mut _order = self.orders.get(&order.order_id).expect("Order does not exist");
+    _order.description = order.description;
+    _order.status = order.status;
+    self.orders.insert(&order.order_id, &_order);
     String::from("OK")
   }
 }

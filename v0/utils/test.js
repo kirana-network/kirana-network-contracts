@@ -1,0 +1,1 @@
+import { WalletAccount, Contract } from "near-api-js";

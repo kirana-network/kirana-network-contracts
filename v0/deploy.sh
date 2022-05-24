@@ -1,0 +1,1 @@
+near dev-deploy --wasmFile res/v0.wasm

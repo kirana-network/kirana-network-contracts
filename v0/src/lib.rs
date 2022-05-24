@@ -19,7 +19,7 @@ pub enum OrderStatus {
   Cancelled,
 }
 
-#[near_bindgen]
+// #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize)]
 #[serde(crate = "near_sdk::serde")]
 pub struct Order {
